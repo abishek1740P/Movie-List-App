@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { MovieProvider } from "./contexts/MovieContext";
 import NavBar from "./components/NavBar";
 import Footer from "./components/footer";
+import Toast from "./components/Toast";
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/favorites" element={<Favorites />} /> 
+            <Route path="/favorites" element={<Favorites />} />
           </Routes>
         </main>
         <Footer />
+        <Toast />
       </div>
     </MovieProvider>
   );

@@ -1,47 +1,108 @@
 .navbar {
-  background-color: #000000;
-  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 2.5rem;
+  height: 68px;
+  background: rgba(13, 13, 20, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
 }
 
-.navbar-brand {
+.navbar-brand a {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.navbar-links {
+.navbar-brand a:hover {
+  opacity: 0.85;
+}
+
+.navbar-right {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-link {
-  font-size: 1rem;
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: color var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  transition: width var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-primary);
+}
+
+.nav-link.active::after {
+  width: 60%;
+}
+
+.nav-link:hover::after {
+  width: 40%;
+}
+
+.fav-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-gradient);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  padding: 0 5px;
+  line-height: 1;
 }
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem;
+    padding: 0 1rem;
+    height: 58px;
   }
 
-  .navbar-brand {
+  .navbar-brand a {
     font-size: 1.2rem;
   }
 
-  .navbar-links {
-    gap: 1rem;
-  }
-
   .nav-link {
-    padding: 0.5rem;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
   }
 }
